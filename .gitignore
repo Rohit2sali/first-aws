@@ -1,0 +1,9 @@
+venv/
+__pycache__/
+*.pyc
+
+# Ignore local database
+*.db
+
+# Ignore environment variables
+.env

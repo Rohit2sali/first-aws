@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AWS AI Chatbot</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f4f9; display: flex; flex-direction: column; align-items: center; }
+        #chat-container { width: 400px; height: 500px; border: 1px solid #ccc; background: white; overflow-y: scroll; padding: 20px; border-radius: 8px; }
+        .message { margin-bottom: 15px; padding: 10px; border-radius: 5px; }
+        .user { background: #e3f2fd; text-align: right; }
+        .ai { background: #f1f8e9; text-align: left; }
+        #input-area { margin-top: 10px; display: flex; width: 400px; }
+        input { flex-grow: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px; }
+        button { padding: 10px; background: #1976d2; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h2>Cloud-Native AI Chatbot</h2>
+    <div id="chat-container"></div>
+    <div id="input-area">
+        <input type="text" id="user-input" placeholder="Type a message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+        async function sendMessage() {
+            const input = document.getElementById('user-input');
+            const container = document.getElementById('chat-container');
+            if(!input.value) return;
+
+            // Display User Message
+            container.innerHTML += `<div class="message user">${input.value}</div>`;
+            const userMsg = input.value;
+            input.value = '';
+
+            // Call FastAPI Backend (EC2)
+            const response = await fetch('/chat', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({user_id: "rohit_01", message: userMsg})
+            });
+            
+            const data = await response.json();
+            container.innerHTML += `<div class="message ai">${data.response}</div>`;
+            container.scrollTop = container.scrollHeight;
+        }
+    </script>
+</body>
+</html>
