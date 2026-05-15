@@ -12,5 +12,5 @@ def chat(data: ChatRequest):
     response = process_chat(data.prompt)
 
     return {
-        "response": response,
+        "response": response
     }
