@@ -75,4 +75,4 @@ async def chat(chat_req: ChatRequest, db: Session = Depends(get_db)):
 
 # @app.get("/")
 # def root():
-    return {"message": "AI Backend Running"}
+    # return {"message": "AI Backend Running"}
