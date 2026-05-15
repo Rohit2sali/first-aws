@@ -5,19 +5,12 @@ from transformers import (
     AutoModelForCausalLM
 )
 
-ENV = os.getenv("ENV", "local")
 
-if ENV == "local":
+from shared.s3_utils import download_model
 
-    MODEL_PATH = r"C:\machine learning\models\tinyllama-weights"
+download_model()
 
-else:
-
-    from shared.s3_utils import download_model
-
-    download_model()
-
-    MODEL_PATH = "/code/models/tinyllama-weights"
+MODEL_PATH = "/code/models/tinyllama-weights"
 
 
 print("Loading model...")
