@@ -29,17 +29,13 @@ app.include_router(auth_router)
 app.include_router(chat_router)
 app.include_router(upload_router)
 
-
 @app.get("/", response_class=HTMLResponse)
-def home(request: Request):
+async def home(request: Request):
 
     return templates.TemplateResponse(
-        "index.html",
-        {
-            "request": request
-        }
+        request,
+        "index.html"
     )
-
 # from fastapi import FastAPI
 
 # from app.db.database import engine
