@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-from first_aws.inference_server.model_loader import tokenizer, model
+from model_loader import tokenizer, model
 
 app = FastAPI()
 
