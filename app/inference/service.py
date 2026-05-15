@@ -1,9 +1,14 @@
-from app.inference.model_loader import tokenizer, model
+from app.inference.model_loader import load_model
 
 
 def generate_response(prompt: str):
 
-    inputs = tokenizer(prompt, return_tensors="pt")
+    tokenizer, model = load_model()
+
+    inputs = tokenizer(
+        prompt,
+        return_tensors="pt"
+    )
 
     output = model.generate(
         **inputs,
