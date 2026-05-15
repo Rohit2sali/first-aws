@@ -23,25 +23,36 @@
     </div>
 
     <script>
-        async function sendMessage() {
+       async function sendMessage() {
             const input = document.getElementById('user-input');
             const container = document.getElementById('chat-container');
-            if(!input.value) return;
-
+        
+            if (!input.value) return;
+        
             // Display User Message
             container.innerHTML += `<div class="message user">${input.value}</div>`;
+        
             const userMsg = input.value;
             input.value = '';
-
-            // Call FastAPI Backend (EC2)
-            const response = await fetch('/chat', {
+        
+            // Call FastAPI Backend
+            const response = await fetch('/chat/', {
                 method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({user_id: "rohit_01", message: userMsg})
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    user_id: "rohit_01",
+                    message: userMsg
+                })
             });
-            
+        
             const data = await response.json();
-            container.innerHTML += `<div class="message ai">${data.response}</div>`;
+        
+            container.innerHTML += `
+                <div class="message ai">${data.response}</div>
+            `;
+        
             container.scrollTop = container.scrollHeight;
         }
     </script>
