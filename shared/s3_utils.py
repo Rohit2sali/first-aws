@@ -1,7 +1,7 @@
 import boto3
 import os
 
-from first_aws.app.core.config import AWS_BUCKET_NAME
+from app.core.config import AWS_BUCKET_NAME
 
 s3 = boto3.client("s3")
 
