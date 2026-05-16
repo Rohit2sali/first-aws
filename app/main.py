@@ -9,7 +9,6 @@ from app.auth.routes import router as auth_router
 from app.chat.routes import router as chat_router
 from app.uploads.routes import router as upload_router
 
-from app.aws.s3_utils import download_model
 
 
 app = FastAPI()
@@ -21,9 +20,6 @@ templates = Jinja2Templates(directory="templates")
 def startup_event():
 
     Base.metadata.create_all(bind=engine)
-
-    download_model()
-
 
 app.include_router(auth_router)
 app.include_router(chat_router)
