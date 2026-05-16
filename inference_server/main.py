@@ -18,10 +18,11 @@ def generate(data: PromptRequest):
         return_tensors="pt"
     )
 
-    output = model.generate(
-        **inputs,
-        max_new_tokens=10
-    )
+    with torch.no_grad():
+        output = model.generate(
+            **inputs,
+            max_new_tokens=10
+        )
 
     response = tokenizer.decode(
         output[0],
