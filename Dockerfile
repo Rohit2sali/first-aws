@@ -2,10 +2,9 @@ FROM python:3.11-slim
 
 WORKDIR /code
 
-RUN pip install torch --index-url https://download.pytorch.org/whl/cpu --no-cache-dir
-COPY ./requirements.txt /code/requirements.txt
+COPY requirements.txt .
 
-RUN pip install --no-cache-dir -r /code/requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY ./app /code/app
 COPY ./templates /code/templates
