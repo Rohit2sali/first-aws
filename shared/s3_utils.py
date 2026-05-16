@@ -1,10 +1,9 @@
 import boto3
 import os
 
-from app.core.config import AWS_BUCKET_NAME
-
 s3 = boto3.client("s3")
 
+AWS_BUCKET_NAME = os.getenv("AWS_BUCKET_NAME")
 
 MODEL_PREFIX = "tinyllama-weights/"
 MODEL_DIR = "/code/models/tinyllama-weights"
