@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-
+import torch
 from model_loader import tokenizer, model
 
 app = FastAPI()
