@@ -12,6 +12,7 @@ class PromptRequest(BaseModel):
 
 @app.post("/generate")
 def generate(data: PromptRequest):
+    print("Starting inference app...")
 
     inputs = tokenizer(
         data.prompt,
