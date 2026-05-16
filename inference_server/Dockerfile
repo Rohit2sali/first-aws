@@ -11,4 +11,6 @@ torch --index-url https://download.pytorch.org/whl/cpu
 
 COPY . .
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "9000"]
+RUN chmod +x /code/entrypoint.sh
+
+CMD ["/code/entrypoint.sh"]
