@@ -1,6 +1,7 @@
 import requests
 
-INFERENCE_URL = "http://localhost:9000/generate"
+# INFERENCE_URL = "http://localhost:9000/generate"
+INFERENCE_URL = "http://inference-server:8000/generate"
 
 
 def process_chat(prompt: str):
