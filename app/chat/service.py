@@ -12,6 +12,9 @@ def process_chat(prompt: str):
         }
     )
 
+    print(response.status_code)
+    print(response.text)
+
     data = response.json()
 
     return data["response"]
