@@ -2,6 +2,7 @@ fastapi
 uvicorn
 jinja2
 boto3
+requests
 python-multipart
 sqlalchemy
 psycopg2-binary
