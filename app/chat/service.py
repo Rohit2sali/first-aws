@@ -1,7 +1,17 @@
-from app.inference.service import generate_response
+import requests
+
+INFERENCE_URL = "http://localhost:9000/generate"
 
 
 def process_chat(prompt: str):
-    response = generate_response(prompt)
-    # response = "Test response"
-    return response
+
+    response = requests.post(
+        INFERENCE_URL,
+        json={
+            "prompt": prompt
+        }
+    )
+
+    data = response.json()
+
+    return data["response"]
