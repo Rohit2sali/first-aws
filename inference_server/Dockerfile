@@ -9,8 +9,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install --no-cache-dir \
 torch --index-url https://download.pytorch.org/whl/cpu
 
-COPY . .
+COPY inference_server ./inference_server
+COPY shared ./shared
 
-RUN chmod +x /code/entrypoint.sh
+WORKDIR /code/inference_server
 
-CMD ["/code/entrypoint.sh"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "9000"]
