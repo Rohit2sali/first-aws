@@ -20,7 +20,7 @@ def generate(data: PromptRequest):
 
     output = model.generate(
         **inputs,
-        max_new_tokens=50
+        max_new_tokens=10
     )
 
     response = tokenizer.decode(
