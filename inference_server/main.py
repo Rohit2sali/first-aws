@@ -5,6 +5,9 @@ from model_loader import tokenizer, model
 
 app = FastAPI()
 
+@app.get("/health")
+def health():
+    return {"status": "ok"}
 
 class PromptRequest(BaseModel):
     prompt: str
