@@ -4,7 +4,7 @@ WORKDIR /code
 
 ENV PYTHONPATH=/code
 
-COPY requirements.txt .
+COPY inference_server/requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
