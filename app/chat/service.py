@@ -9,7 +9,8 @@ def process_chat(prompt: str):
         INFERENCE_URL,
         json={
             "prompt": prompt
-        }
+        },
+        timeout=120
     )
 
     print(response.status_code)
